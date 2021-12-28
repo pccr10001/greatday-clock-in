@@ -30,7 +30,7 @@ async function login(company, email, pwd, npwd) {
             username: email,
             password: pwd,
             npwd: npwd,
-            ist: 'sfgo3894',
+            ist: process.env.IST,
             keep: true,
             preLoginData: company
         })).data;
@@ -42,7 +42,7 @@ async function login(company, email, pwd, npwd) {
 async function doClock(email, pwd, npwd) {
     var company =
         (await axios.get(
-            'https://saas.greatdayhr.com/getAPIConfig?account=sfgo3894'))
+            'https://saas.greatdayhr.com/getAPIConfig?account=' + process.env.IST))
         .data.DATA;
 
     var l = await login(company, email, pwd, npwd);
@@ -58,7 +58,7 @@ async function doClock(email, pwd, npwd) {
     })).data.data;
     var uploadReq = new FormData();
     uploadReq.append("file", fs.createReadStream('2021_09_27_12v_Kleki.png'))
-    var u = await axios.post('https://apigonbcv2.dataon.com/storage/upload/storageAttendance/sfgo3894?access_token=' + l.id, uploadReq, {
+    var u = await axios.post('https://apigonbcv2.dataon.com/storage/upload/storageAttendance/'+process.env.IST+'?access_token=' + l.id, uploadReq, {
         headers: uploadReq.getHeaders()
     })
 
