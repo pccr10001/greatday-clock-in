@@ -1,5 +1,12 @@
 # greatday-clock-in
 
+### Description
+* dashboard at `:3000/dash`
+* clock in flow
+    1. reschedule next day clock in at 8 PM
+    2. schedule clock off when clock in
+
+### Install
 * initial a mongodb
 * create db `agenda`
 * create collection `users`
